@@ -3,7 +3,7 @@ import * as argon2 from "argon2";
 import { AuthDto } from "./dto";
 import { JwtService } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
-import { UserDocument } from "src/user/schemas/user.schema";
+import { UserDocument } from "./../user/schemas/user.schema";
 import { Model } from "mongoose";
 import { InjectModel } from "@nestjs/mongoose";
 
