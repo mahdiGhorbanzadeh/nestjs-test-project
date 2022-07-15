@@ -1,25 +1,26 @@
-import { Body, Controller, HttpCode, ParseIntPipe, Post } from "@nestjs/common";
+import { Body, Controller, ForbiddenException, HttpCode, ParseIntPipe, Post } from "@nestjs/common";
+import { ConfigService } from "@nestjs/config";
 import { AuthService } from "./auth.service";
 import { AuthDto } from "./dto";
+
+
 
 
 @Controller("auth")
 
 export class AuthController {
 
-    constructor(private authService:AuthService){}
+    constructor( private authService:AuthService){}
 
     @Post('signup')
     signup(@Body() dto:AuthDto){
-       console.log({
-           dto
-       })
-       return 'signup page'
+      return this.authService.signup(dto) 
+
     }
 
     @Post('signin')
-    signin(){
-        
-       return this.authService.login()
+    signin(@Body() dto:AuthDto){
+       return this.authService.signin(dto)
     }
+    
 }
